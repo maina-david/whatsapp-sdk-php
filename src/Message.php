@@ -97,10 +97,21 @@ class Message extends Service
             'to' => $options['to'],
             'type' => $options['type'],
             $options['type'] => [
-                'link' => $options['url'],
-                'caption' => $options['caption'] ? $options['caption'] : ''
+                'link' => $options['url']
             ]
         ];
+
+        if ($options['type'] == 'image' || $options['type'] == 'video') {
+            if (!empty($options['caption'])) {
+                $data[$options['type']]['caption'] = $options['caption'];
+            }
+        }
+
+        if ($options['type'] == 'document') {
+            if (!empty($options['filename'])) {
+                $data[$options['type']]['filename'] = $options['filename'];
+            }
+        }
 
         $response = $this->client->post('messages', ['form_params' => $data]);
 
@@ -133,6 +144,18 @@ class Message extends Service
                 'id' => $options['media_id']
             ]
         ];
+
+        if ($options['type'] == 'image' || $options['type'] == 'video') {
+            if (!empty($options['caption'])) {
+                $data[$options['type']]['caption'] = $options['caption'];
+            }
+        }
+
+        if ($options['type'] == 'document') {
+            if (!empty($options['filename'])) {
+                $data[$options['type']]['filename'] = $options['filename'];
+            }
+        }
 
         $response = $this->client->post('messages', ['form_params' => $data]);
 
