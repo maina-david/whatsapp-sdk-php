@@ -4,7 +4,7 @@ namespace MainaDavid\WhatsappSdk;
 
 use GuzzleHttp\Client;
 
-class WhatsApp extends service
+class WhatsApp
 {
     const BASE_URL = "https://graph.facebook.com/";
 
