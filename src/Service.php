@@ -6,9 +6,15 @@ abstract class Service
 {
     protected $client;
 
+    /**
+     * This function is a constructor for the class. It takes a single argument, `$client`, which is an
+     * instance of the `GuzzleHttp\Client` class
+     * 
+     * @param client The client object that is used to make the API calls.
+     */
     public function __construct($client)
     {
-        $this->client     = $client;
+        $this->client = $client;
     }
 
     /**
