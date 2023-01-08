@@ -22,6 +22,23 @@ The recommended way to install the SDK is with [Composer](http://getcomposer.org
 composer require maina-david/whatsapp-sdk
 ```
 
+Optional: The service provider will automatically get registered. Or you may manually add the service provider in your config/app.php file:
+
+```
+'providers' => [
+    // ...
+    MainaDavid\WhatsappSdk\WhatsAppServiceProvider::class,
+];
+```
+
+You should publish the config/whatsapp.php config file with:
+
+```bash
+php artisan vendor:publish --provider="MainaDavid\WhatsappSdk\WhatsAppServiceProvider"
+```
+
+Set up in the config/whatsapp.php: Phone Number ID, permanent access token and Graph API version you want to use(Default is V15.0) obtained from the [Developer's Dashboard](https://developers.facebook.com/).
+
 ## Usage
 
 You will need to setup a phone number and a permanent access token in [Facebook Developer's Portal](https://developers.facebook.com/).
