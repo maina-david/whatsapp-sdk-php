@@ -137,4 +137,78 @@ class Message extends service
 
         return $this->success($response);
     }
+
+    /**
+     * Send a reply to a media message by URL
+     * 
+     * @param content This is the array of parameters that you want to send to the API.
+     * 
+     * @return The response from the API.
+     */
+    public function sendReplytoMediaMessageByURL($content)
+    {
+        if (empty($content['to']) || empty($content['type']) || empty($content['url']) || empty($content['message_id'])) {
+            return $this->error('recipient, media type, message ID and media url must be defined');
+        }
+
+        if (!filter_var($content['url'], FILTER_VALIDATE_URL)) {
+            return $this->error('media url is not a valid url');
+        }
+
+        if (!in_array($content['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
+            return $this->error('media type is not supported');
+        }
+
+        $data = [
+            'messaging_product' => 'whatsapp',
+            'recipient_type' => 'individual',
+            'to' => $content['to'],
+            "context" => [
+                "message_id" => $content['message_id']
+            ],
+            'type' => $content['type'],
+            $content['type'] => [
+                'link' => $content['url']
+            ]
+        ];
+
+        $response = $this->client->post($data);
+
+        return $this->success($response);
+    }
+
+    /**
+     * Send a reply to a media message by ID
+     * 
+     * @param content This is the array of parameters that you want to send to the API.
+     * 
+     * @return The response from the API.
+     */
+    public function sendReplytoMediaMessageByID($content)
+    {
+        if (empty($content['to']) || empty($content['type']) || empty($content['media_id']) || empty($content['message_id'])) {
+            return $this->error('recipient, media type, message ID and media ID must be defined');
+        }
+
+        if (!in_array($content['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
+            return $this->error('media type is not supported');
+        }
+
+        $data = [
+            'messaging_product' => 'whatsapp',
+            'recipient_type' => 'individual',
+            'to' => $content['to'],
+            "context" => [
+                "message_id" => $content['message_id']
+            ],
+            'type' => $content['type'],
+            $content['type'] => [
+                'id' => $content['media_id']
+            ]
+        ];
+
+        $response = $this->client->post($data);
+
+        return $this->success($response);
+    }
 }
