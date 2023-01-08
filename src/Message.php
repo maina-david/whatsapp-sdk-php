@@ -23,13 +23,13 @@ class Message extends Service
         }
 
         $data = [
-            "messaging_product" => "whatsapp",
-            "recipient_type" => "individual",
-            "to" => $options['to'],
-            "type" => "text",
-            "text" => [
-                "preview_url" => false,
-                "body" => $options['message']
+            'messaging_product' => 'whatsapp',
+            'recipient_type' => 'individual',
+            'to' => $options['to'],
+            'type' => 'text',
+            'text' => [
+                'preview_url' => false,
+                'body' => $options['message']
             ]
         ];
 
@@ -52,16 +52,16 @@ class Message extends Service
         }
 
         $data = [
-            "messaging_product" => "whatsapp",
-            "recipient_type" => "individual",
-            "to" => $options['to'],
-            "context" => [
-                "message_id" => $options['message_id']
+            'messaging_product' => 'whatsapp',
+            'recipient_type' => 'individual',
+            'to' => $options['to'],
+            'context' => [
+                'message_id' => $options['message_id']
             ],
-            "type" => "text",
-            "text" => [
-                "preview_url" => false,
-                "body" => $options['message']
+            'type' => 'text',
+            'text' => [
+                'preview_url' => false,
+                'body' => $options['message']
             ]
         ];
 
@@ -164,8 +164,8 @@ class Message extends Service
             'messaging_product' => 'whatsapp',
             'recipient_type' => 'individual',
             'to' => $options['to'],
-            "context" => [
-                "message_id" => $options['message_id']
+            'context' => [
+                'message_id' => $options['message_id']
             ],
             'type' => $options['type'],
             $options['type'] => [
@@ -199,8 +199,8 @@ class Message extends Service
             'messaging_product' => 'whatsapp',
             'recipient_type' => 'individual',
             'to' => $options['to'],
-            "context" => [
-                "message_id" => $options['message_id']
+            'context' => [
+                'message_id' => $options['message_id']
             ],
             'type' => $options['type'],
             $options['type'] => [
@@ -261,8 +261,8 @@ class Message extends Service
             'messaging_product' => 'whatsapp',
             'recipient_type' => 'individual',
             'to' => $options['to'],
-            "context" => [
-                "message_id" => $options['message_id']
+            'context' => [
+                'message_id' => $options['message_id']
             ],
             'type' => 'location',
             'location' => [
@@ -294,7 +294,7 @@ class Message extends Service
         $data = [
             'messaging_product' => 'whatsapp',
             'status' => 'read',
-            "message_id" => $options['message_id']
+            'message_id' => $options['message_id']
         ];
 
         $response = $this->client->post('messages', $data);
