@@ -2,7 +2,7 @@
 
 namespace MainaDavid\WhatsappSdk;
 
-class Message extends service
+class Message extends Service
 {
     public function __construct($client)
     {
