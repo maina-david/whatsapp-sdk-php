@@ -16,20 +16,20 @@ class Message extends service
      * 
      * @return The response from the API.
      */
-    public function sendTextMessage($content)
+    public function sendTextMessage($options)
     {
-        if (empty($content['to']) || empty($content['message'])) {
+        if (empty($options['to']) || empty($options['message'])) {
             return $this->error('recipient and message must be defined');
         }
 
         $data = [
             "messaging_product" => "whatsapp",
             "recipient_type" => "individual",
-            "to" => $content['to'],
+            "to" => $options['to'],
             "type" => "text",
             "text" => [
                 "preview_url" => false,
-                "body" => $content['message']
+                "body" => $options['message']
             ]
         ];
 
@@ -45,23 +45,23 @@ class Message extends service
      * 
      * @return The response from the API.
      */
-    public function sendReplytoTextMessage($content)
+    public function sendReplytoTextMessage($options)
     {
-        if (empty($content['to']) || empty($content['message_id']) || empty($content['message'])) {
+        if (empty($options['to']) || empty($options['message_id']) || empty($options['message'])) {
             return $this->error('recipient, message ID and message must be defined');
         }
 
         $data = [
             "messaging_product" => "whatsapp",
             "recipient_type" => "individual",
-            "to" => $content['to'],
+            "to" => $options['to'],
             "context" => [
-                "message_id" => $content['message_id']
+                "message_id" => $options['message_id']
             ],
             "type" => "text",
             "text" => [
                 "preview_url" => false,
-                "body" => $content['message']
+                "body" => $options['message']
             ]
         ];
 
@@ -77,28 +77,28 @@ class Message extends service
      * 
      * @return The response from the API.
      */
-    public function sendMediaMessageByURL($content)
+    public function sendMediaMessageByURL($options)
     {
-        if (empty($content['to']) || empty($content['type']) || empty($content['url'])) {
+        if (empty($options['to']) || empty($options['type']) || empty($options['url'])) {
             return $this->error('recipient, media type and media url must be defined');
         }
 
-        if (!filter_var($content['url'], FILTER_VALIDATE_URL)) {
+        if (!filter_var($options['url'], FILTER_VALIDATE_URL)) {
             return $this->error('media url is not a valid url');
         }
 
-        if (!in_array($content['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
+        if (!in_array($options['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
             return $this->error('media type is not supported');
         }
 
         $data = [
             'messaging_product' => 'whatsapp',
             'recipient_type' => 'individual',
-            'to' => $content['to'],
-            'type' => $content['type'],
-            $content['type'] => [
-                'link' => $content['url'],
-                'caption' => $content['caption'] ? $content['caption'] : ''
+            'to' => $options['to'],
+            'type' => $options['type'],
+            $options['type'] => [
+                'link' => $options['url'],
+                'caption' => $options['caption'] ? $options['caption'] : ''
             ]
         ];
 
@@ -114,23 +114,23 @@ class Message extends service
      * 
      * @return The response from the API.
      */
-    public function sendMediaMessageByID($content)
+    public function sendMediaMessageByID($options)
     {
-        if (empty($content['to']) || empty($content['type']) || empty($content['media_id'])) {
+        if (empty($options['to']) || empty($options['type']) || empty($options['media_id'])) {
             return $this->error('recipient, media type and media ID must be defined');
         }
 
-        if (!in_array($content['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
+        if (!in_array($options['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
             return $this->error('media type is not supported');
         }
 
         $data = [
             'messaging_product' => 'whatsapp',
             'recipient_type' => 'individual',
-            'to' => $content['to'],
-            'type' => $content['type'],
-            $content['type'] => [
-                'id' => $content['media_id']
+            'to' => $options['to'],
+            'type' => $options['type'],
+            $options['type'] => [
+                'id' => $options['media_id']
             ]
         ];
 
@@ -146,30 +146,30 @@ class Message extends service
      * 
      * @return The response from the API.
      */
-    public function sendReplytoMediaMessageByURL($content)
+    public function sendReplytoMediaMessageByURL($options)
     {
-        if (empty($content['to']) || empty($content['type']) || empty($content['url']) || empty($content['message_id'])) {
+        if (empty($options['to']) || empty($options['type']) || empty($options['url']) || empty($options['message_id'])) {
             return $this->error('recipient, media type, message ID and media url must be defined');
         }
 
-        if (!filter_var($content['url'], FILTER_VALIDATE_URL)) {
+        if (!filter_var($options['url'], FILTER_VALIDATE_URL)) {
             return $this->error('media url is not a valid url');
         }
 
-        if (!in_array($content['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
+        if (!in_array($options['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
             return $this->error('media type is not supported');
         }
 
         $data = [
             'messaging_product' => 'whatsapp',
             'recipient_type' => 'individual',
-            'to' => $content['to'],
+            'to' => $options['to'],
             "context" => [
-                "message_id" => $content['message_id']
+                "message_id" => $options['message_id']
             ],
-            'type' => $content['type'],
-            $content['type'] => [
-                'link' => $content['url']
+            'type' => $options['type'],
+            $options['type'] => [
+                'link' => $options['url']
             ]
         ];
 
@@ -185,26 +185,26 @@ class Message extends service
      * 
      * @return The response from the API.
      */
-    public function sendReplytoMediaMessageByID($content)
+    public function sendReplytoMediaMessageByID($options)
     {
-        if (empty($content['to']) || empty($content['type']) || empty($content['media_id']) || empty($content['message_id'])) {
+        if (empty($options['to']) || empty($options['type']) || empty($options['media_id']) || empty($options['message_id'])) {
             return $this->error('recipient, media type, message ID and media ID must be defined');
         }
 
-        if (!in_array($content['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
+        if (!in_array($options['type'], ['image', 'document', 'audio', 'sticker', 'video'])) {
             return $this->error('media type is not supported');
         }
 
         $data = [
             'messaging_product' => 'whatsapp',
             'recipient_type' => 'individual',
-            'to' => $content['to'],
+            'to' => $options['to'],
             "context" => [
-                "message_id" => $content['message_id']
+                "message_id" => $options['message_id']
             ],
-            'type' => $content['type'],
-            $content['type'] => [
-                'id' => $content['media_id']
+            'type' => $options['type'],
+            $options['type'] => [
+                'id' => $options['media_id']
             ]
         ];
 
@@ -220,22 +220,22 @@ class Message extends service
      * 
      * @return The response from the API.
      */
-    public function sendLocationMessage($content)
+    public function sendLocationMessage($options)
     {
-        if (empty($content['to']) || empty($content['latitude']) || empty($content['longitude']) || empty($content['name']) || empty($content['address'])) {
+        if (empty($options['to']) || empty($options['latitude']) || empty($options['longitude']) || empty($options['name']) || empty($options['address'])) {
             return $this->error('recipient, latitude, longitude, name and address must be defined');
         }
 
         $data = [
             'messaging_product' => 'whatsapp',
             'recipient_type' => 'individual',
-            'to' => $content['to'],
+            'to' => $options['to'],
             'type' => 'location',
             'location' => [
-                'latitude' => $content['latitude'],
-                'longitude' => $content['longitude'],
-                'name' => $content['name'],
-                'address' => $content['address']
+                'latitude' => $options['latitude'],
+                'longitude' => $options['longitude'],
+                'name' => $options['name'],
+                'address' => $options['address']
             ]
         ];
 
@@ -251,25 +251,25 @@ class Message extends service
      * 
      * @return The response from the API.
      */
-    public function sendReplytoLocationMessage($content)
+    public function sendReplytoLocationMessage($options)
     {
-        if (empty($content['to']) || empty($content['latitude']) || empty($content['longitude']) || empty($content['name']) || empty($content['address']) || empty($content['message_id'])) {
+        if (empty($options['to']) || empty($options['latitude']) || empty($options['longitude']) || empty($options['name']) || empty($options['address']) || empty($options['message_id'])) {
             return $this->error('recipient, latitude, longitude, name, address and message ID must be defined');
         }
 
         $data = [
             'messaging_product' => 'whatsapp',
             'recipient_type' => 'individual',
-            'to' => $content['to'],
+            'to' => $options['to'],
             "context" => [
-                "message_id" => $content['message_id']
+                "message_id" => $options['message_id']
             ],
             'type' => 'location',
             'location' => [
-                'latitude' => $content['latitude'],
-                'longitude' => $content['longitude'],
-                'name' => $content['name'],
-                'address' => $content['address']
+                'latitude' => $options['latitude'],
+                'longitude' => $options['longitude'],
+                'name' => $options['name'],
+                'address' => $options['address']
             ]
         ];
 
@@ -285,16 +285,16 @@ class Message extends service
      * 
      * @return The response from the API.
      */
-    public function markMessageAsRead($content)
+    public function markMessageAsRead($options)
     {
-        if (empty($content['message_id'])) {
+        if (empty($options['message_id'])) {
             return $this->error('message ID must be defined');
         }
 
         $data = [
             'messaging_product' => 'whatsapp',
             'status' => 'read',
-            "message_id" => $content['message_id']
+            "message_id" => $options['message_id']
         ];
 
         $response = $this->client->post($data);
