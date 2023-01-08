@@ -97,7 +97,8 @@ class Message extends service
             'to' => $content['to'],
             'type' => $content['type'],
             $content['type'] => [
-                'link' => $content['url']
+                'link' => $content['url'],
+                'caption' => $content['caption'] ? $content['caption'] : ''
             ]
         ];
 
