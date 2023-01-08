@@ -276,4 +276,28 @@ class Message extends service
 
         return $this->success($response);
     }
+
+    /**
+     * It marks a message as read
+     * 
+     * @param content This is the content of the message.
+     * 
+     * @return The response from the API.
+     */
+    public function markMessageAsRead($content)
+    {
+        if (empty($content['message_id'])) {
+            return $this->error('message ID must be defined');
+        }
+
+        $data = [
+            'messaging_product' => 'whatsapp',
+            'status' => 'read',
+            "message_id" => $content['message_id']
+        ];
+
+        $response = $this->client->post($data);
+
+        return $this->success($response);
+    }
 }
