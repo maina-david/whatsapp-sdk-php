@@ -8,7 +8,7 @@
 
 ## Documentation
 
-Take a look at the [API docs here](https://developers.facebook.com/docs/whatsapp/cloud-api/guides/).
+Take a look at the [WhatsApp Business Management API docs here](https://developers.facebook.com/docs/whatsapp/cloud-api/guides/).
 
 ## Install
 
