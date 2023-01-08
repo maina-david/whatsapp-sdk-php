@@ -12,7 +12,7 @@ class Message extends service
     /**
      * It sends a text message to a recipient
      * 
-     * @param content an array containing the following keys:['to'], ['message']
+     * @param content an array containing the following keys:['to'] & ['message']
      * 
      * @return The response from the API.
      */
@@ -26,6 +26,38 @@ class Message extends service
             "messaging_product" => "whatsapp",
             "recipient_type" => "individual",
             "to" => $content['to'],
+            "type" => "text",
+            "text" => [
+                "preview_url" => false,
+                "body" => $content['message']
+            ]
+        ];
+
+        $response = $this->client->post($data);
+
+        return $this->success($response);
+    }
+
+    /**
+     * It sends a text message to a recipient
+     * 
+     * @param content an array containing the following keys:['to'], ['message_id'] & ['message']
+     * 
+     * @return The response from the API.
+     */
+    public function sendReplytoTextMessage($content)
+    {
+        if (empty($content['to']) || empty($content['message_id']) || empty($content['message'])) {
+            return $this->error('recipient, message ID and message must be defined');
+        }
+
+        $data = [
+            "messaging_product" => "whatsapp",
+            "recipient_type" => "individual",
+            "to" => $content['to'],
+            "context" => [
+                "message_id" => $content['message_id']
+            ],
             "type" => "text",
             "text" => [
                 "preview_url" => false,
