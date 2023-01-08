@@ -211,4 +211,69 @@ class Message extends service
 
         return $this->success($response);
     }
+
+    /**
+     * Send a location message to a recipient
+     * 
+     * @param content an array containing the following keys:
+     * 
+     * @return The response from the API.
+     */
+    public function sendLocationMessage($content)
+    {
+        if (empty($content['to']) || empty($content['latitude']) || empty($content['longitude']) || empty($content['name']) || empty($content['address'])) {
+            return $this->error('recipient, latitude, longitude, name and address must be defined');
+        }
+
+        $data = [
+            'messaging_product' => 'whatsapp',
+            'recipient_type' => 'individual',
+            'to' => $content['to'],
+            'type' => 'location',
+            'location' => [
+                'latitude' => $content['latitude'],
+                'longitude' => $content['longitude'],
+                'name' => $content['name'],
+                'address' => $content['address']
+            ]
+        ];
+
+        $response = $this->client->post($data);
+
+        return $this->success($response);
+    }
+
+    /**
+     * Send a location message to a recipient
+     * 
+     * @param content an array containing the following keys:
+     * 
+     * @return The response from the API.
+     */
+    public function sendReplytoLocationMessage($content)
+    {
+        if (empty($content['to']) || empty($content['latitude']) || empty($content['longitude']) || empty($content['name']) || empty($content['address']) || empty($content['message_id'])) {
+            return $this->error('recipient, latitude, longitude, name, address and message ID must be defined');
+        }
+
+        $data = [
+            'messaging_product' => 'whatsapp',
+            'recipient_type' => 'individual',
+            'to' => $content['to'],
+            "context" => [
+                "message_id" => $content['message_id']
+            ],
+            'type' => 'location',
+            'location' => [
+                'latitude' => $content['latitude'],
+                'longitude' => $content['longitude'],
+                'name' => $content['name'],
+                'address' => $content['address']
+            ]
+        ];
+
+        $response = $this->client->post($data);
+
+        return $this->success($response);
+    }
 }
