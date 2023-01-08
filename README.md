@@ -1,5 +1,3 @@
-# whatsapp-sdk-php
-
 # WhatsApp PHP SDK
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/maina-david/whatsapp-sdk)](https://packagist.org/packages/maina-david/whatsapp-sdk)
