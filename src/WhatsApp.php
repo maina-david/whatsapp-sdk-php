@@ -14,7 +14,7 @@ class WhatsApp
 
     public $accessToken;
 
-    protected $messageClient;
+    protected $client;
 
 
     /**
@@ -22,13 +22,11 @@ class WhatsApp
      */
     public function __construct()
     {
-        $this->baseUrl = self::BASE_URL . config('whatsapp.api_version') . '/' . config('whatsapp.phone_number_id');
+        $this->baseUrl = self::BASE_URL . config('whatsapp.api_version') . '/' . config('whatsapp.phone_number_id') . '/';
         $this->accessToken = config('whatsapp.access_token');
 
-        $this->messageUrl = $this->baseUrl . '/messages';
-
-        $this->messageClient = new Client([
-            'base_uri' => $this->messageUrl,
+        $this->client = new Client([
+            'base_uri' => $this->baseUrl,
             'headers' => [
                 'Authorization' => 'Bearer ' . $this->accessToken,
                 'Content-Type' => 'application/json'
@@ -43,7 +41,7 @@ class WhatsApp
      */
     public function message()
     {
-        $message = new Message($this->messageClient);
+        $message = new Message($this->client);
 
         return $message;
     }

@@ -33,7 +33,7 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->send($data);
+        $response = $this->client->post('messages', $data);
 
         return $this->success($response);
     }
@@ -65,7 +65,7 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->send($data);
+        $response = $this->client->post('messages', $data);
 
         return $this->success($response);
     }
@@ -102,7 +102,7 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->send($data);
+        $response = $this->client->post('messages', $data);
 
         return $this->success($response);
     }
@@ -134,7 +134,7 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->send($data);
+        $response = $this->client->post('messages', $data);
 
         return $this->success($response);
     }
@@ -173,7 +173,7 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->send($data);
+        $response = $this->client->post('messages', $data);
 
         return $this->success($response);
     }
@@ -208,7 +208,7 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->send($data);
+        $response = $this->client->post('messages', $data);
 
         return $this->success($response);
     }
@@ -239,7 +239,7 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->send($data);
+        $response = $this->client->post('messages', $data);
 
         return $this->success($response);
     }
@@ -273,7 +273,7 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->send($data);
+        $response = $this->client->post('messages', $data);
 
         return $this->success($response);
     }
@@ -297,7 +297,7 @@ class Message extends Service
             "message_id" => $options['message_id']
         ];
 
-        $response = $this->client->send($data);
+        $response = $this->client->post('messages', $data);
 
         return $this->success($response);
     }
