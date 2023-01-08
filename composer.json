@@ -1,0 +1,16 @@
+{
+    "name": "maina-david/whatsapp-sdk",
+    "description": "Integrate Facebook Graph API to whatsapp",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "7.5.x-dev",
+        "php": "^8.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MainaDavid\\WhatsappSdk\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
