@@ -2,6 +2,8 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/maina-david/whatsapp-sdk)](https://packagist.org/packages/maina-david/whatsapp-sdk)
 
+![](https://banners.beyondco.de/WhatsApp%20PHP%20SDK.png?theme=light&packageManager=composer+require&packageName=maina-david%2Fwhatsapp-sdk&pattern=bamboo&style=style_1&description=A+PHP+package+for+integrating+the+WhatsApp+business+APIs&md=1&showWatermark=1&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
+
 > This SDK provides convenient access to the WhatsApp API for applications written in PHP.
 
 ## Documentation
