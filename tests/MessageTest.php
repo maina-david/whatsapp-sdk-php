@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Client;
 use MainaDavid\WhatsAppSDK\Message;
 use PHPUnit\Framework\TestCase;
 
