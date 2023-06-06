@@ -1,6 +1,6 @@
 <?php
 
-namespace MainaDavid\WhatsappSdk;
+namespace MainaDavid\WhatsAppSDK;
 
 use GuzzleHttp\Client;
 

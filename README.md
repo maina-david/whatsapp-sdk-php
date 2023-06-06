@@ -27,14 +27,14 @@ Optional: The service provider will automatically get registered. Or you may man
 ```php
 'providers' => [
     // ...
-    MainaDavid\WhatsappSdk\WhatsAppServiceProvider::class,
+    MainaDavid\WhatsAppSDK\WhatsAppServiceProvider::class,
 ];
 ```
 
 You should publish the config/whatsapp.php config file with:
 
 ```bash
-php artisan vendor:publish --provider="MainaDavid\WhatsappSdk\WhatsAppServiceProvider"
+php artisan vendor:publish --provider="MainaDavid\WhatsAppSDK\WhatsAppServiceProvider"
 ```
 
 Set up in the config/whatsapp.php: Phone Number ID, permanent access token and Graph API version you want to use(Default is V15.0) obtained from the [Developer's Dashboard](https://developers.facebook.com/).
@@ -46,7 +46,7 @@ You will need to setup a phone number and a permanent access token in [Facebook 
 [Learn how to create a permanent token](https://developers.facebook.com/docs/whatsapp/business-management-api/get-started#1--acquire-an-access-token-using-a-system-user-or-facebook-login)
 
 ```php
-use MainaDavid\WhatsappSdk\WhatsApp;
+use MainaDavid\WhatsAppSDK\WhatsApp;
 
 $phone = '254700123456'; //phone number in international format
 $text = 'Hello World'; // string of message to be sent

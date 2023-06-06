@@ -1,6 +1,6 @@
 <?php
 
-namespace MainaDavid\WhatsappSdk;
+namespace MainaDavid\WhatsAppSDK;
 
 abstract class Service
 {
