@@ -1,1 +1,0 @@
-{"version":1,"defects":{"MessageTest::testSendTextMessage":4,"MessageTest::testSendReplytoTextMessage":4,"MessageTest::testSendMediaMessageByURL":4,"MessageTest::testMarkMessageAsRead":4},"times":{"MessageTest::testSendTextMessage":0.016,"MessageTest::testSendReplytoTextMessage":0,"MessageTest::testSendMediaMessageByURL":0,"MessageTest::testMarkMessageAsRead":0}}
