@@ -53,8 +53,6 @@ $text = 'Hello World'; // string of message to be sent
 
 $WA = new WhatsApp();
 
-$message = $WA->message();
-
 $response = $message->sendTextMessage([
     'to' => $phone,
     'message' => $text
@@ -62,14 +60,6 @@ $response = $message->sendTextMessage([
 
 print_r($response);
 ```
-
-## Instantiation
-
-Instantiating the class will give you an object with available methods
-
-- `$WA = new WhatsApp();`: Instantiate the class
-- Get available service
-  - [Message Service](#TextMessage): `$message = $WA->message();`
 
 ### TextMessage
 
