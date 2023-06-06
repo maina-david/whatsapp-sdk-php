@@ -51,7 +51,7 @@ use MainaDavid\WhatsappSdk\WhatsApp;
 $phone = '254700123456'; //phone number in international format
 $text = 'Hello World'; // string of message to be sent
 
-$WA = new WhatsApp();
+$message = new WhatsApp();
 
 $response = $message->sendTextMessage([
     'to' => $phone,
