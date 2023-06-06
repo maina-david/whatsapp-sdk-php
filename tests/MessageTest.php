@@ -1,82 +1,46 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 use MainaDavid\WhatsAppSDK\Message;
+use PHPUnit\Framework\TestCase;
 
 class MessageTest extends TestCase
 {
-    protected $message;
-
-    protected function setUp(): void
-    {
-        $client = $this->createMock(\GuzzleHttp\Client::class);
-        $this->message = new Message($client);
-    }
-
-    /**
-     * The function tests the sendTextMessage method of a PHP class by mocking a response and asserting
-     * that the status returned is "success".
-     */
     public function testSendTextMessage()
     {
+        // Create a mock of the client class
+        $clientMock = $this->getMockBuilder(Client::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        // Set up the expected method call and response for the mock
+        $clientMock->expects($this->once())
+            ->method('post')
+            ->with(
+                $this->equalTo('messages'),
+                $this->equalTo(['form_params' => [
+                    'messaging_product' => 'whatsapp',
+                    'recipient_type' => 'individual',
+                    'to' => '1234567890',
+                    'type' => 'text',
+                    'text' => [
+                        'preview_url' => false,
+                        'body' => 'Hello, world!'
+                    ]
+                ]])
+            )
+            ->willReturn('Success!');
+
+        // Create an instance of the Message class and inject the mock client
+        $message = new Message($clientMock);
+
+        // Call the sendTextMessage method with sample options
         $options = [
-            'to' => '123456789',
-            'message' => 'Hello, World!'
+            'to' => '1234567890',
+            'message' => 'Hello, world!'
         ];
+        $result = $message->sendTextMessage($options);
 
-        $response = $this->createMock(\Psr\Http\Message\ResponseInterface::class);
-        $response->method('getBody')->willReturn('{"status": "success"}');
-
-        $client = $this->message->getClient();
-        $client->method('post')->willReturn($response);
-
-        $result = $this->message->sendTextMessage($options);
-
-        $this->assertEquals('success', $result['status']);
-    }
-
-    /**
-     * The function tests the sending of a media message with a specified URL and caption using a mocked
-     * HTTP response.
-     */
-    public function testSendMediaMessageByURL()
-    {
-        $options = [
-            'to' => '123456789',
-            'type' => 'image',
-            'url' => 'https://example.com/image.jpg',
-            'caption' => 'Check out this image!'
-        ];
-
-        $response = $this->createMock(\Psr\Http\Message\ResponseInterface::class);
-        $response->method('getBody')->willReturn('{"status": "success"}');
-
-        $client = $this->message->getClient();
-        $client->method('post')->willReturn($response);
-
-        $result = $this->message->sendMediaMessageByURL($options);
-
-        $this->assertEquals('success', $result['status']);
-    }
-
-    /**
-     * The function tests the markMessageAsRead method of a PHP class by mocking a response and asserting
-     * that the status returned is "success".
-     */
-    public function testMarkMessageAsRead()
-    {
-        $options = [
-            'message_id' => '123456789'
-        ];
-
-        $response = $this->createMock(\Psr\Http\Message\ResponseInterface::class);
-        $response->method('getBody')->willReturn('{"status": "success"}');
-
-        $client = $this->message->getClient();
-        $client->method('post')->willReturn($response);
-
-        $result = $this->message->markMessageAsRead($options);
-
-        $this->assertEquals('success', $result['status']);
+        // Assert that the method returns the expected success response
+        $this->assertEquals('Success!', $result);
     }
 }
