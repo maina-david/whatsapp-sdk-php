@@ -5,6 +5,10 @@ use PHPUnit\Framework\TestCase;
 
 class MessageTest extends TestCase
 {
+    /**
+     * This is a unit test for the sendTextMessage method of a Message class that uses a mock client to
+     * test if the method sends a text message with the correct parameters.
+     */
     public function testSendTextMessage()
     {
         // Create a mock of the client class
