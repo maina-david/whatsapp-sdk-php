@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/maina-david/whatsapp-sdk)](https://packagist.org/packages/maina-david/whatsapp-sdk)
 
-![](https://banners.beyondco.de/WhatsApp%20PHP%20SDK.png?theme=light&packageManager=composer+require&packageName=maina-david%2Fwhatsapp-sdk&pattern=bamboo&style=style_1&description=A+PHP+package+for+integrating+the+WhatsApp+business+APIs&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
+![WhatsApp](https://banners.beyondco.de/WhatsApp%20PHP%20SDK.png?theme=light&packageManager=composer+require&packageName=maina-david%2Fwhatsapp-sdk&pattern=bamboo&style=style_1&description=A+PHP+package+for+integrating+the+WhatsApp+business+APIs&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
 > This SDK provides convenient access to the WhatsApp API for applications written in PHP.
 
@@ -14,7 +14,7 @@ Take a look at the [WhatsApp Business Management API docs here](https://develope
 
 You can install the PHP SDK via composer or by downloading the source
 
-#### Via Composer
+### Via Composer
 
 The recommended way to install the SDK is with [Composer](http://getcomposer.org/).
 
@@ -24,7 +24,7 @@ composer require maina-david/whatsapp-sdk
 
 Optional: The service provider will automatically get registered. Or you may manually add the service provider in your config/app.php file:
 
-```
+```php
 'providers' => [
     // ...
     MainaDavid\WhatsappSdk\WhatsAppServiceProvider::class,
@@ -63,18 +63,18 @@ print_r($response);
 
 ### TextMessage
 
-- `sendTextMessage($options)`: Sends a text message
+- `sendTextMessage(array $options)`: Sends a text message
 
   - `message`: Message content. `REQUIRED`
   - `to`: phone number. `REQUIRED`
 
-- `sendReplytoTextMessage($options)`: Reply to a message
+- `sendReplytoTextMessage(array $options)`: Reply to a message
 
   - `message_id`: whatsapp message ID of previous message. `REQUIRED`
   - `message`: Message content. `REQUIRED`
   - `to`: phone number. `REQUIRED`
 
-- `sendMediaMessageByURL($options)`: Send a media message with url
+- `sendMediaMessageByURL(array $options)`: Send a media message with url
 
   - `type`: media type. Only 'image', 'document', 'audio', 'sticker', 'video' `REQUIRED`
   - `url`: URL of the media to be sent. `REQUIRED`
@@ -82,7 +82,7 @@ print_r($response);
   - `caption`: Describes the specified image or video. Do not use it with audio, sticker, or document media. `OPTIONAL`
   - `filename`: Describes the filename for the specific document. Use only with document media. `OPTIONAL`
 
-- `sendMediaMessageByID($options)`: Send a media message with media ID
+- `sendMediaMessageByID(array $options)`: Send a media message with media ID
 
   - `type`: media type. Only 'image', 'document', 'audio', 'sticker', 'video' `REQUIRED`
   - `media_id`: Media ID from WhatsApp. `REQUIRED`
@@ -90,19 +90,19 @@ print_r($response);
   - `caption`: Describes the specified image or video. Do not use it with audio, sticker, or document media. `OPTIONAL`
   - `filename`: Describes the filename for the specific document. Use only with document media. `OPTIONAL`
 
-- `sendReplytoMediaMessageByURL($options)`: Send a reply to a media message by URL
+- `sendReplytoMediaMessageByURL(array $options)`: Send a reply to a media message by URL
 
   - `message_id`: whatsapp message ID of previous message. `REQUIRED`
   - `url`: URL of the media to be sent. `REQUIRED`
   - `to`: phone number. `REQUIRED`
 
-- `sendReplytoMediaMessageByID($options)`: Send a reply to a media message by ID
+- `sendReplytoMediaMessageByID(array $options)`: Send a reply to a media message by ID
 
   - `message_id`: whatsapp message ID of previous message. `REQUIRED`
   - `media_id`: Media ID from WhatsApp. `REQUIRED`
   - `to`: phone number. `REQUIRED`
 
-- `sendLocationMessage($options)`: Send a location message to a recipient
+- `sendLocationMessage(array $options)`: Send a location message to a recipient
 
   - `to`: phone number. `REQUIRED`
   - `latitude`: The longitude of the location. `REQUIRED`
@@ -110,7 +110,7 @@ print_r($response);
   - `name`: The name of the location. `OPTIONAL`
   - `address`: The address of the location. This field is only displayed if name is present.. `OPTIONAL`
 
-- `sendReplytoLocationMessage($options)`: Send a location message to a recipient
+- `sendReplytoLocationMessage(array $options)`: Send a location message to a recipient
 
   - `message_id`: whatsapp message ID of previous message. `REQUIRED`
   - `to`: phone number. `REQUIRED`
@@ -119,7 +119,7 @@ print_r($response);
   - `name`: The name of the location. `OPTIONAL`
   - `address`: The address of the location. This field is only displayed if name is present.. `OPTIONAL`
 
-- `markMessageAsRead($options)`: Mark a message as read
+- `markMessageAsRead(array $options)`: Mark a message as read
 
   - `message_id`: whatsapp message ID of previous message. `REQUIRED`
 
