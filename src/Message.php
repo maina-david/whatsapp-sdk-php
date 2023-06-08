@@ -12,11 +12,11 @@ class Message extends Service
     /**
      * It sends a text message to a recipient
      * 
-     * @param $options
+     * @param array $options
      * 
      * @return array response from the API.
      */
-    public function sendTextMessage($options): array
+    public function sendTextMessage(array $options): array
     {
         if (empty($options['to']) || empty($options['message'])) {
             return $this->error('recipient and message must be defined');
@@ -45,11 +45,11 @@ class Message extends Service
     /**
      * It sends a text message to a recipient
      * 
-     * @param $options
+     * @param array $options
      * 
      * @return array response from the API.
      */
-    public function sendReplyToTextMessage($options): array
+    public function sendReplyToTextMessage(array $options): array
     {
         if (empty($options['to']) || empty($options['message_id']) || empty($options['message'])) {
             return $this->error('recipient, message ID and message must be defined');
@@ -81,11 +81,11 @@ class Message extends Service
     /**
      * It sends a media message to a recipient using a URL
      * 
-     * @param $options
+     * @param array $options
      * 
      * @return array response from the API.
      */
-    public function sendMediaMessageByURL($options): array
+    public function sendMediaMessageByURL(array $options): array
     {
         if (empty($options['to']) || empty($options['type']) || empty($options['url'])) {
             return $this->error('recipient, media type and media url must be defined');
@@ -133,11 +133,11 @@ class Message extends Service
     /**
      * Send a media message to a recipient by media ID
      * 
-     * @param $options
+     * @param array $options
      * 
      * @return array response from the API.
      */
-    public function sendMediaMessageByID($options): array
+    public function sendMediaMessageByID(array $options): array
     {
         if (empty($options['to']) || empty($options['type']) || empty($options['media_id'])) {
             return $this->error('recipient, media type and media ID must be defined');
@@ -181,11 +181,11 @@ class Message extends Service
     /**
      * Send a reply to a media message by URL
      * 
-     * @param $options
+     * @param array $options
      * 
      * @return array response from the API.
      */
-    public function sendReplyToMediaMessageByURL($options): array
+    public function sendReplyToMediaMessageByURL(array $options): array
     {
         if (empty($options['to']) || empty($options['type']) || empty($options['url']) || empty($options['message_id'])) {
             return $this->error('recipient, media type, message ID and media url must be defined');
@@ -224,11 +224,11 @@ class Message extends Service
     /**
      * Send a reply to a media message by ID
      * 
-     * @param $options
+     * @param array $options
      * 
      * @return array response from the API.
      */
-    public function sendReplyToMediaMessageByID($options): array
+    public function sendReplyToMediaMessageByID(array $options): array
     {
         if (empty($options['to']) || empty($options['type']) || empty($options['media_id']) || empty($options['message_id'])) {
             return $this->error('recipient, media type, message ID and media ID must be defined');
@@ -263,11 +263,11 @@ class Message extends Service
     /**
      * Send a location message to a recipient
      * 
-     * @param $options
+     * @param array $options
      * 
      * @return array response from the API.
      */
-    public function sendLocationMessage($options): array
+    public function sendLocationMessage(array $options): array
     {
         if (empty($options['to']) || empty($options['latitude']) || empty($options['longitude']) || empty($options['name']) || empty($options['address'])) {
             return $this->error('recipient, latitude, longitude, name and address must be defined');
@@ -298,11 +298,11 @@ class Message extends Service
     /**
      * Send a location message to a recipient
      * 
-     * @param $options
+     * @param array $options
      * 
      * @return array response from the API.
      */
-    public function sendReplyToLocationMessage($options): array
+    public function sendReplyToLocationMessage(array $options): array
     {
         if (empty($options['to']) || empty($options['latitude']) || empty($options['longitude']) || empty($options['name']) || empty($options['address']) || empty($options['message_id'])) {
             return $this->error('recipient, latitude, longitude, name, address and message ID must be defined');
@@ -336,11 +336,11 @@ class Message extends Service
     /**
      * It marks a message as read
      * 
-     * @param $options
+     * @param array $options
      * 
      * @return array response from the API.
      */
-    public function markMessageAsRead($options): array
+    public function markMessageAsRead(array $options): array
     {
         if (empty($options['message_id'])) {
             return $this->error('message ID must be defined');

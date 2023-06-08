@@ -20,11 +20,11 @@ abstract class Service
     /**
      * It returns an array with a status of 'error' and the data passed to it
      * 
-     * @param data The data you want to send back to the client.
+     * @param string $data The data you want to send back to the client.
      * 
-     * @return An array with a status of error and the data passed in.
+     * @return array with a status of error and the data passed in.
      */
-    protected static function error($data)
+    protected static function error(string $data): array
     {
         return [
             'status'     => 'error',
@@ -35,11 +35,11 @@ abstract class Service
     /**
      * It returns an array with a status of success and the data from the API call
      * 
-     * @param data The data that you want to send to the API.
+     * @param mixed $data The data you want to send back to the client.
      * 
-     * @return A JSON object with a status of success and the data from the API call.
+     * @return array with a status of success and the data from the API call.
      */
-    protected static function success($data)
+    protected static function success(mixed $data): array
     {
         return [
             'status'     => 'success',
