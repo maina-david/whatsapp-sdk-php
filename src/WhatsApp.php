@@ -8,19 +8,26 @@ class WhatsApp
 {
     const BASE_URL = "https://graph.facebook.com/";
 
-    public $baseUrl;
+    public string $baseUrl;
 
     public $accessToken;
 
-    protected $client;
+    protected Client $client;
 
     /**
      * It creates a new instance of the WhatsApp API client
      */
     public function __construct()
     {
-        $this->baseUrl = self::BASE_URL . config('whatsapp.api_version') . '/' . config('whatsapp.phone_number_id') . '/';
-        $this->accessToken = config('whatsapp.access_token');
+        $phoneNumberId = config('whatsapp.phone_number_id');
+        $accessToken = config('whatsapp.access_token');
+
+        if (empty($phoneNumberId) || empty($accessToken)) {
+            throw new \Exception('phone_number_id or access_token is not set');
+        }
+
+        $this->baseUrl = self::BASE_URL . config('whatsapp.api_version') . '/' . $phoneNumberId . '/';
+        $this->accessToken = $accessToken;
 
         $this->client = new Client([
             'base_uri' => $this->baseUrl,
@@ -30,6 +37,7 @@ class WhatsApp
             ]
         ]);
     }
+
 
     /**
      * Helper method to instantiate the Message class
@@ -45,9 +53,9 @@ class WhatsApp
      * Send a text message using the WhatsApp API.
      *
      * @param array $params An array of parameters including 'to' (phone number) and 'message' (text message).
-     * @return mixed The response from the API.
+     * @return array The response from the API.
      */
-    public function sendTextMessage(array $params)
+    public function sendTextMessage(array $params): array
     {
         $message = $this->createMessage();
         return $message->sendTextMessage($params);
@@ -57,9 +65,9 @@ class WhatsApp
      * Send a reply to a text message using the WhatsApp API.
      *
      * @param array $params An array of parameters including 'to' (phone number), 'message' (text message), and 'message_id' (original message ID).
-     * @return mixed The response from the API.
+     * @return array The response from the API.
      */
-    public function sendReplyToTextMessage(array $params)
+    public function sendReplyToTextMessage(array $params): array
     {
         $message = $this->createMessage();
         return $message->sendReplyToTextMessage($params);
@@ -69,9 +77,9 @@ class WhatsApp
      * Send a media message by URL using the WhatsApp API.
      *
      * @param array $params An array of parameters including 'to' (phone number) and 'media_url' (URL of the media file).
-     * @return mixed The response from the API.
+     * @return array The response from the API.
      */
-    public function sendMediaMessageByURL(array $params)
+    public function sendMediaMessageByURL(array $params): array
     {
         $message = $this->createMessage();
         return $message->sendMediaMessageByURL($params);
@@ -81,9 +89,9 @@ class WhatsApp
      * Send a media message by ID using the WhatsApp API.
      *
      * @param array $params An array of parameters including 'to' (phone number) and 'media_id' (ID of the media file).
-     * @return mixed The response from the API.
+     * @return array The response from the API.
      */
-    public function sendMediaMessageByID(array $params)
+    public function sendMediaMessageByID(array $params): array
     {
         $message = $this->createMessage();
         return $message->sendMediaMessageByID($params);
@@ -93,9 +101,9 @@ class WhatsApp
      * Send a reply to a media message by URL using the WhatsApp API.
      *
      * @param array $params An array of parameters including 'to' (phone number), 'message' (text message), 'media_url' (URL of the media file), and 'message_id' (original message ID).
-     * @return mixed The response from the API.
+     * @return array The response from the API.
      */
-    public function sendReplyToMediaMessageByURL(array $params)
+    public function sendReplyToMediaMessageByURL(array $params): array
     {
         $message = $this->createMessage();
         return $message->sendReplyToMediaMessageByURL($params);
@@ -105,9 +113,9 @@ class WhatsApp
      * Send a reply to a media message by ID using the WhatsApp API.
      *
      * @param array $params An array of parameters including 'to' (phone number), 'message' (text message), 'media_id' (ID of the media file), and 'message_id' (original message ID).
-     * @return mixed The response from the API.
+     * @return array The response from the API.
      */
-    public function sendReplyToMediaMessageByID(array $params)
+    public function sendReplyToMediaMessageByID(array $params): array
     {
         $message = $this->createMessage();
         return $message->sendReplyToMediaMessageByID($params);
@@ -117,9 +125,9 @@ class WhatsApp
      * Send a location message using the WhatsApp API.
      *
      * @param array $params An array of parameters including 'to' (phone number), 'latitude' (latitude coordinate), and 'longitude' (longitude coordinate).
-     * @return mixed The response from the API.
+     * @return array The response from the API.
      */
-    public function sendLocationMessage(array $params)
+    public function sendLocationMessage(array $params): array
     {
         $message = $this->createMessage();
         return $message->sendLocationMessage($params);
@@ -129,9 +137,9 @@ class WhatsApp
      * Send a reply to a location message using the WhatsApp API.
      *
      * @param array $params An array of parameters including 'to' (phone number), 'latitude' (latitude coordinate), 'longitude' (longitude coordinate), and 'message_id' (original message ID).
-     * @return mixed The response from the API.
+     * @return array The response from the API.
      */
-    public function sendReplyToLocationMessage(array $params)
+    public function sendReplyToLocationMessage(array $params): array
     {
         $message = $this->createMessage();
         return $message->sendReplyToLocationMessage($params);
@@ -141,9 +149,9 @@ class WhatsApp
      * Mark a message as read using the WhatsApp API.
      *
      * @param array $params An array of parameters including 'message_id' (message ID).
-     * @return mixed The response from the API.
+     * @return array The response from the API.
      */
-    public function markMessageAsRead(array $params)
+    public function markMessageAsRead(array $params): array
     {
         $message = $this->createMessage();
         return $message->markMessageAsRead($params);
