@@ -68,7 +68,7 @@ print_r($response);
   - `message`: Message content. `REQUIRED`
   - `to`: phone number. `REQUIRED`
 
-- `sendReplytoTextMessage(array $options)`: Reply to a message
+- `sendReplyToTextMessage(array $options)`: Reply to a message
 
   - `message_id`: whatsapp message ID of previous message. `REQUIRED`
   - `message`: Message content. `REQUIRED`
@@ -90,13 +90,13 @@ print_r($response);
   - `caption`: Describes the specified image or video. Do not use it with audio, sticker, or document media. `OPTIONAL`
   - `filename`: Describes the filename for the specific document. Use only with document media. `OPTIONAL`
 
-- `sendReplytoMediaMessageByURL(array $options)`: Send a reply to a media message by URL
+- `sendReplyToMediaMessageByURL(array $options)`: Send a reply to a media message by URL
 
   - `message_id`: whatsapp message ID of previous message. `REQUIRED`
   - `url`: URL of the media to be sent. `REQUIRED`
   - `to`: phone number. `REQUIRED`
 
-- `sendReplytoMediaMessageByID(array $options)`: Send a reply to a media message by ID
+- `sendReplyToMediaMessageByID(array $options)`: Send a reply to a media message by ID
 
   - `message_id`: whatsapp message ID of previous message. `REQUIRED`
   - `media_id`: Media ID from WhatsApp. `REQUIRED`
@@ -110,7 +110,7 @@ print_r($response);
   - `name`: The name of the location. `OPTIONAL`
   - `address`: The address of the location. This field is only displayed if name is present.. `OPTIONAL`
 
-- `sendReplytoLocationMessage(array $options)`: Send a location message to a recipient
+- `sendReplyToLocationMessage(array $options)`: Send a location message to a recipient
 
   - `message_id`: whatsapp message ID of previous message. `REQUIRED`
   - `to`: phone number. `REQUIRED`

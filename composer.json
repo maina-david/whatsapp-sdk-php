@@ -1,6 +1,6 @@
 {
   "name": "maina-david/whatsapp-sdk",
-  "description": "Integrate Facebook Graph API to whatsapp",
+  "description": "Integrate Facebook Graph API to WhatsApp",
   "keywords": [
     "message",
     "api",
@@ -9,11 +9,11 @@
   "homepage": "https://github.com/maina-david/whatsapp-sdk-php",
   "type": "library",
   "require": {
-    "php": ">=7.1",
-    "guzzlehttp/guzzle": "^6.0 || ^7.0"
+    "php": ">=8.0",
+    "guzzlehttp/guzzle": "^7.2"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.0"
+    "phpunit/phpunit": "^10.1"
     },
   "license": "MIT",
   "autoload": {

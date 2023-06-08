@@ -36,7 +36,7 @@ class WhatsApp
      *
      * @return Message An instance of the Message class
      */
-    protected function createMessage()
+    protected function createMessage(): Message
     {
         return new Message($this->client);
     }
