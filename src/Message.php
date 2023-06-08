@@ -33,9 +33,13 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->post('messages', ['form_params' => $data]);
+        try {
+            $response = $this->client->post('messages', ['form_params' => $data]);
 
-        return $this->success($response);
+            return $this->success($response);
+        }catch (\Exception $e){
+            return $this->error($e->getMessage());
+        }
     }
 
     /**
@@ -65,9 +69,13 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->post('messages', ['form_params' => $data]);
+        try {
+            $response = $this->client->post('messages', ['form_params' => $data]);
 
-        return $this->success($response);
+            return $this->success($response);
+        }catch (\Exception $e){
+            return $this->error($e->getMessage());
+        }
     }
 
     /**
@@ -113,9 +121,13 @@ class Message extends Service
             }
         }
 
-        $response = $this->client->post('messages', ['form_params' => $data]);
+        try {
+            $response = $this->client->post('messages', ['form_params' => $data]);
 
-        return $this->success($response);
+            return $this->success($response);
+        }catch (\Exception $e){
+            return $this->error($e->getMessage());
+        }
     }
 
     /**
@@ -157,9 +169,13 @@ class Message extends Service
             }
         }
 
-        $response = $this->client->post('messages', ['form_params' => $data]);
+        try {
+            $response = $this->client->post('messages', ['form_params' => $data]);
 
-        return $this->success($response);
+            return $this->success($response);
+        }catch (\Exception $e){
+            return $this->error($e->getMessage());
+        }
     }
 
     /**
@@ -196,9 +212,13 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->post('messages', ['form_params' => $data]);
+        try {
+            $response = $this->client->post('messages', ['form_params' => $data]);
 
-        return $this->success($response);
+            return $this->success($response);
+        }catch (\Exception $e){
+            return $this->error($e->getMessage());
+        }
     }
 
     /**
@@ -231,9 +251,13 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->post('messages', ['form_params' => $data]);
+        try {
+            $response = $this->client->post('messages', ['form_params' => $data]);
 
-        return $this->success($response);
+            return $this->success($response);
+        }catch (\Exception $e){
+            return $this->error($e->getMessage());
+        }
     }
 
     /**
@@ -262,9 +286,13 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->post('messages', ['form_params' => $data]);
+        try {
+            $response = $this->client->post('messages', ['form_params' => $data]);
 
-        return $this->success($response);
+            return $this->success($response);
+        }catch (\Exception $e){
+            return $this->error($e->getMessage());
+        }
     }
 
     /**
@@ -296,9 +324,13 @@ class Message extends Service
             ]
         ];
 
-        $response = $this->client->post('messages', ['form_params' => $data]);
+        try {
+            $response = $this->client->post('messages', ['form_params' => $data]);
 
-        return $this->success($response);
+            return $this->success($response);
+        }catch (\Exception $e){
+            return $this->error($e->getMessage());
+        }
     }
 
     /**
@@ -320,8 +352,12 @@ class Message extends Service
             'message_id' => $options['message_id']
         ];
 
-        $response = $this->client->post('messages', ['form_params' => $data]);
+        try {
+            $response = $this->client->post('messages', ['form_params' => $data]);
 
-        return $this->success($response);
+            return $this->success($response);
+        }catch (\Exception $e){
+            return $this->error($e->getMessage());
+        }
     }
 }
