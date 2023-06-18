@@ -2,6 +2,7 @@
 
 namespace MainaDavid\WhatsAppSDK;
 
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -17,18 +18,19 @@ class WhatsApp
 
     /**
      * It creates a new instance of the WhatsApp API client
-     * @throws \Exception
+     * @throws Exception
      */
-    public function __construct()
+    public function __construct($phoneNumberId = null, $accessToken = null, $apiVersion = null)
     {
-        $phoneNumberId = config('whatsapp.phone_number_id');
-        $accessToken = config('whatsapp.access_token');
+        $phoneNumberId = $phoneNumberId ?? config('whatsapp.phone_number_id');
+        $accessToken = $accessToken ?? config('whatsapp.access_token');
+        $apiVersion = $apiVersion ?? config('whatsapp.api_version');
 
-        if (empty($phoneNumberId) || empty($accessToken)) {
-            throw new \Exception('phone_number_id or access_token is not set');
+        if (empty($phoneNumberId) || empty($accessToken) || empty($apiVersion)) {
+            throw new Exception('phone_number_id, access_token, or api_version is not set');
         }
 
-        $this->baseUrl = self::BASE_URL . config('whatsapp.api_version') . '/' . $phoneNumberId . '/';
+        $this->baseUrl = self::BASE_URL . $apiVersion . '/' . $phoneNumberId . '/';
         $this->accessToken = $accessToken;
 
         $this->client = new Client([
@@ -39,6 +41,7 @@ class WhatsApp
             ]
         ]);
     }
+
 
 
     /**

@@ -2,6 +2,7 @@
 
 namespace MainaDavid\WhatsAppSDK;
 
+use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 
 class Message extends Service
@@ -40,7 +41,7 @@ class Message extends Service
             $response = $this->client->post('messages', ['form_params' => $data]);
 
             return $this->success($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             return $this->error($e->getMessage());
         }
     }
@@ -77,7 +78,7 @@ class Message extends Service
             $response = $this->client->post('messages', ['form_params' => $data]);
 
             return $this->success($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             return $this->error($e->getMessage());
         }
     }
@@ -130,7 +131,7 @@ class Message extends Service
             $response = $this->client->post('messages', ['form_params' => $data]);
 
             return $this->success($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             return $this->error($e->getMessage());
         }
     }
@@ -179,7 +180,7 @@ class Message extends Service
             $response = $this->client->post('messages', ['form_params' => $data]);
 
             return $this->success($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             return $this->error($e->getMessage());
         }
     }
@@ -223,7 +224,7 @@ class Message extends Service
             $response = $this->client->post('messages', ['form_params' => $data]);
 
             return $this->success($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             return $this->error($e->getMessage());
         }
     }
@@ -263,7 +264,7 @@ class Message extends Service
             $response = $this->client->post('messages', ['form_params' => $data]);
 
             return $this->success($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             return $this->error($e->getMessage());
         }
     }
@@ -299,7 +300,7 @@ class Message extends Service
             $response = $this->client->post('messages', ['form_params' => $data]);
 
             return $this->success($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             return $this->error($e->getMessage());
         }
     }
@@ -338,7 +339,7 @@ class Message extends Service
             $response = $this->client->post('messages', ['form_params' => $data]);
 
             return $this->success($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             return $this->error($e->getMessage());
         }
     }
@@ -367,7 +368,7 @@ class Message extends Service
             $response = $this->client->post('messages', ['form_params' => $data]);
 
             return $this->success($response);
-        }catch (\Exception $e){
+        }catch (Exception $e){
             return $this->error($e->getMessage());
         }
     }

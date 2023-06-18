@@ -22,11 +22,11 @@ abstract class Service
     /**
      * It returns an array with a status of 'error' and the data passed to it
      * 
-     * @param string $data The data you want to send back to the client.
+     * @param mixed $data The data you want to send back to the client.
      * 
      * @return array with a status of error and the data passed in.
      */
-    protected static function error(string $data): array
+    protected static function error(mixed $data): array
     {
         return [
             'status'     => 'error',
