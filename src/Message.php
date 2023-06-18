@@ -2,6 +2,8 @@
 
 namespace MainaDavid\WhatsAppSDK;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 class Message extends Service
 {
     public function __construct($client)
@@ -11,10 +13,11 @@ class Message extends Service
 
     /**
      * It sends a text message to a recipient
-     * 
+     *
      * @param array $options
-     * 
+     *
      * @return array response from the API.
+     * @throws GuzzleException
      */
     public function sendTextMessage(array $options): array
     {
@@ -44,10 +47,11 @@ class Message extends Service
 
     /**
      * It sends a text message to a recipient
-     * 
+     *
      * @param array $options
-     * 
+     *
      * @return array response from the API.
+     * @throws GuzzleException
      */
     public function sendReplyToTextMessage(array $options): array
     {
@@ -80,10 +84,11 @@ class Message extends Service
 
     /**
      * It sends a media message to a recipient using a URL
-     * 
+     *
      * @param array $options
-     * 
+     *
      * @return array response from the API.
+     * @throws GuzzleException
      */
     public function sendMediaMessageByURL(array $options): array
     {
@@ -132,10 +137,11 @@ class Message extends Service
 
     /**
      * Send a media message to a recipient by media ID
-     * 
+     *
      * @param array $options
-     * 
+     *
      * @return array response from the API.
+     * @throws GuzzleException
      */
     public function sendMediaMessageByID(array $options): array
     {
@@ -180,10 +186,11 @@ class Message extends Service
 
     /**
      * Send a reply to a media message by URL
-     * 
+     *
      * @param array $options
-     * 
+     *
      * @return array response from the API.
+     * @throws GuzzleException
      */
     public function sendReplyToMediaMessageByURL(array $options): array
     {
@@ -223,10 +230,11 @@ class Message extends Service
 
     /**
      * Send a reply to a media message by ID
-     * 
+     *
      * @param array $options
-     * 
+     *
      * @return array response from the API.
+     * @throws GuzzleException
      */
     public function sendReplyToMediaMessageByID(array $options): array
     {
@@ -262,10 +270,11 @@ class Message extends Service
 
     /**
      * Send a location message to a recipient
-     * 
+     *
      * @param array $options
-     * 
+     *
      * @return array response from the API.
+     * @throws GuzzleException
      */
     public function sendLocationMessage(array $options): array
     {
@@ -297,10 +306,11 @@ class Message extends Service
 
     /**
      * Send a location message to a recipient
-     * 
+     *
      * @param array $options
-     * 
+     *
      * @return array response from the API.
+     * @throws GuzzleException
      */
     public function sendReplyToLocationMessage(array $options): array
     {
@@ -335,10 +345,11 @@ class Message extends Service
 
     /**
      * It marks a message as read
-     * 
+     *
      * @param array $options
-     * 
+     *
      * @return array response from the API.
+     * @throws GuzzleException
      */
     public function markMessageAsRead(array $options): array
     {

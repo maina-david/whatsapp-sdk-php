@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class WhatsAppServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         // Register class in the service container
         $this->app->bind('whatsapp', function ($app) {
@@ -17,7 +17,7 @@ class WhatsAppServiceProvider extends ServiceProvider
     /**
      * It tells Laravel to publish the config file to the config folder
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__ . '/../config/whatsapp.php' => config_path('whatsapp.php'),

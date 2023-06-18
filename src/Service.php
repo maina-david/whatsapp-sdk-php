@@ -2,17 +2,19 @@
 
 namespace MainaDavid\WhatsAppSDK;
 
+use GuzzleHttp\Client;
+
 abstract class Service
 {
-    protected $client;
+    protected Client $client;
 
     /**
      * This function is a constructor for the class. It takes a single argument, `$client`, which is an
      * instance of the `GuzzleHttp\Client` class
      * 
-     * @param client The client object that is used to make the API calls.
+     * @param Client $client The client object that is used to make the API calls.
      */
-    public function __construct($client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
     }

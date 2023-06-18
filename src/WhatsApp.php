@@ -3,6 +3,7 @@
 namespace MainaDavid\WhatsAppSDK;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 class WhatsApp
 {
@@ -16,6 +17,7 @@ class WhatsApp
 
     /**
      * It creates a new instance of the WhatsApp API client
+     * @throws \Exception
      */
     public function __construct()
     {
@@ -54,6 +56,7 @@ class WhatsApp
      *
      * @param array $params An array of parameters including 'to' (phone number) and 'message' (text message).
      * @return array The response from the API.
+     * @throws GuzzleException
      */
     public function sendTextMessage(array $params): array
     {
@@ -66,6 +69,7 @@ class WhatsApp
      *
      * @param array $params An array of parameters including 'to' (phone number), 'message' (text message), and 'message_id' (original message ID).
      * @return array The response from the API.
+     * @throws GuzzleException
      */
     public function sendReplyToTextMessage(array $params): array
     {
@@ -78,6 +82,7 @@ class WhatsApp
      *
      * @param array $params An array of parameters including 'to' (phone number) and 'media_url' (URL of the media file).
      * @return array The response from the API.
+     * @throws GuzzleException
      */
     public function sendMediaMessageByURL(array $params): array
     {
@@ -90,6 +95,7 @@ class WhatsApp
      *
      * @param array $params An array of parameters including 'to' (phone number) and 'media_id' (ID of the media file).
      * @return array The response from the API.
+     * @throws GuzzleException
      */
     public function sendMediaMessageByID(array $params): array
     {
@@ -102,6 +108,7 @@ class WhatsApp
      *
      * @param array $params An array of parameters including 'to' (phone number), 'message' (text message), 'media_url' (URL of the media file), and 'message_id' (original message ID).
      * @return array The response from the API.
+     * @throws GuzzleException
      */
     public function sendReplyToMediaMessageByURL(array $params): array
     {
@@ -114,6 +121,7 @@ class WhatsApp
      *
      * @param array $params An array of parameters including 'to' (phone number), 'message' (text message), 'media_id' (ID of the media file), and 'message_id' (original message ID).
      * @return array The response from the API.
+     * @throws GuzzleException
      */
     public function sendReplyToMediaMessageByID(array $params): array
     {
@@ -126,6 +134,7 @@ class WhatsApp
      *
      * @param array $params An array of parameters including 'to' (phone number), 'latitude' (latitude coordinate), and 'longitude' (longitude coordinate).
      * @return array The response from the API.
+     * @throws GuzzleException
      */
     public function sendLocationMessage(array $params): array
     {
@@ -138,6 +147,7 @@ class WhatsApp
      *
      * @param array $params An array of parameters including 'to' (phone number), 'latitude' (latitude coordinate), 'longitude' (longitude coordinate), and 'message_id' (original message ID).
      * @return array The response from the API.
+     * @throws GuzzleException
      */
     public function sendReplyToLocationMessage(array $params): array
     {
@@ -150,6 +160,7 @@ class WhatsApp
      *
      * @param array $params An array of parameters including 'message_id' (message ID).
      * @return array The response from the API.
+     * @throws GuzzleException
      */
     public function markMessageAsRead(array $params): array
     {
