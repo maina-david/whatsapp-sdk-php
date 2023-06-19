@@ -56,7 +56,7 @@ public function sendMessage()
 {
     try {
         // Instantiate the Whatsapp class with the necessary parameters
-        $whatsapp = new WhatsApp($phoneNumberId, $accessToken, $apiVersion);
+        $whatsapp = new WhatsApp($phoneNumberId, $accessToken);
 
         // Prepare the options for sending a text message
         $options = [
@@ -82,7 +82,8 @@ public function sendMessage()
 }
 
 ```
-In the above example, the `WhatsApp` class is instantiated using the `$phoneNumberId`, `$accessToken`, and `$apiVersion` parameters. You can provide these parameters directly or let the class retrieve them from the Laravel configuration file if they are not specified.
+
+In the above example, the `WhatsApp` class is instantiated using the `$phoneNumberId` and `$accessToken` parameters. You can provide these parameters directly or let the class retrieve them from the configuration file if they are not specified.
 
 Remember to replace `+123456789` with the actual recipient's phone number and `'Hello, world!'` with the desired message content.
 
