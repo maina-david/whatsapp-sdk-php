@@ -16,6 +16,8 @@ class WhatsApp
 
     protected Client $client;
 
+    protected Message $message;
+
     /**
      * It creates a new instance of the WhatsApp API client
      * @throws Exception
@@ -40,19 +42,10 @@ class WhatsApp
                 'Content-Type' => 'application/json'
             ]
         ]);
+
+        $this->message = new Message($this->client);
     }
 
-
-
-    /**
-     * Helper method to instantiate the Message class
-     *
-     * @return Message An instance of the Message class
-     */
-    protected function createMessage(): Message
-    {
-        return new Message($this->client);
-    }
 
     /**
      * Send a text message using the WhatsApp API.
@@ -63,8 +56,7 @@ class WhatsApp
      */
     public function sendTextMessage(array $params): array
     {
-        $message = $this->createMessage();
-        return $message->sendTextMessage($params);
+        return $this->message->sendTextMessage($params);
     }
 
     /**
@@ -76,8 +68,7 @@ class WhatsApp
      */
     public function sendReplyToTextMessage(array $params): array
     {
-        $message = $this->createMessage();
-        return $message->sendReplyToTextMessage($params);
+        return $this->message->sendReplyToTextMessage($params);
     }
 
     /**
@@ -89,8 +80,7 @@ class WhatsApp
      */
     public function sendMediaMessageByURL(array $params): array
     {
-        $message = $this->createMessage();
-        return $message->sendMediaMessageByURL($params);
+        return $this->message->sendMediaMessageByURL($params);
     }
 
     /**
@@ -102,8 +92,7 @@ class WhatsApp
      */
     public function sendMediaMessageByID(array $params): array
     {
-        $message = $this->createMessage();
-        return $message->sendMediaMessageByID($params);
+        return $this->message->sendMediaMessageByID($params);
     }
 
     /**
@@ -115,8 +104,7 @@ class WhatsApp
      */
     public function sendReplyToMediaMessageByURL(array $params): array
     {
-        $message = $this->createMessage();
-        return $message->sendReplyToMediaMessageByURL($params);
+        return $this->message->sendReplyToMediaMessageByURL($params);
     }
 
     /**
@@ -128,8 +116,7 @@ class WhatsApp
      */
     public function sendReplyToMediaMessageByID(array $params): array
     {
-        $message = $this->createMessage();
-        return $message->sendReplyToMediaMessageByID($params);
+        return $this->message->sendReplyToMediaMessageByID($params);
     }
 
     /**
@@ -141,8 +128,7 @@ class WhatsApp
      */
     public function sendLocationMessage(array $params): array
     {
-        $message = $this->createMessage();
-        return $message->sendLocationMessage($params);
+        return $this->message->sendLocationMessage($params);
     }
 
     /**
@@ -154,8 +140,7 @@ class WhatsApp
      */
     public function sendReplyToLocationMessage(array $params): array
     {
-        $message = $this->createMessage();
-        return $message->sendReplyToLocationMessage($params);
+        return $this->message->sendReplyToLocationMessage($params);
     }
 
     /**
@@ -167,7 +152,6 @@ class WhatsApp
      */
     public function markMessageAsRead(array $params): array
     {
-        $message = $this->createMessage();
-        return $message->markMessageAsRead($params);
+        return $this->message->markMessageAsRead($params);
     }
 }
