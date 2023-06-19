@@ -47,7 +47,7 @@ You will need to set up a phone number and a permanent access token in [Facebook
 
 ### Instantiating the WhatsApp Class
 
-The `WhatsApp` class can be instantiated with or without parameters. If no parameters are provided, it will attempt to retrieve the values from the Laravel configuration file. Alternatively, you can pass the necessary parameters directly when instantiating the class.
+The `WhatsApp` class can be instantiated with or without parameters. If no parameters are provided, it will attempt to retrieve the values from the whatsapp configuration file. Alternatively, you can pass the necessary parameters directly when instantiating the class.
 
 ```php
 use MainaDavid\WhatsAppSDK\WhatsApp;
