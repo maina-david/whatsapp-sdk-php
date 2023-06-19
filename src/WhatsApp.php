@@ -12,7 +12,7 @@ class WhatsApp
 
     public string $baseUrl;
 
-    public $accessToken;
+    public mixed $accessToken;
 
     protected Client $client;
 
